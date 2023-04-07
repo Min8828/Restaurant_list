@@ -29,35 +29,41 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
-      <div class="row row-cols-sm-3">
-        {{#each restaurants}}
-          <a
-            href="/restaurants/{{this.id}}"
-            class="text-secondary text-decoration-none"
-          >
-            <div class="card mb-3">
-              <img
-                class="card-img-top"
-                src="{{this.image}}"
-                alt="{{this.name}}"
-              />
-              <div class="card-body p-3">
-                <h6 class="card-title">{{this.name}}</h6>
+      {{#if restaurants}}
+        <div class="row row-cols-sm-3">
+          {{#each restaurants}}
+            <a
+              href="/restaurants/{{this.id}}"
+              class="text-secondary text-decoration-none"
+            >
+              <div class="card mb-3">
+                <img
+                  class="card-img-top"
+                  src="{{this.image}}"
+                  alt="{{this.name}}"
+                />
+                <div class="card-body p-3">
+                  <h6 class="card-title">{{this.name}}</h6>
 
-                <div class="restaurant-category">
-                  <i class="fa-solid fa-utensils mb-3 pe-1"></i>
-                  {{this.category}}
-                </div>
-                <div class="text-end restaurant-rating">
-                  {{this.rating}}
-                  <i class="fa-regular fa-star"></i>
-                </div>
+                  <div class="restaurant-category">
+                    <i class="fa-solid fa-utensils mb-3 pe-1"></i>
+                    {{this.category}}
+                  </div>
+                  <div class="text-end restaurant-rating">
+                    {{this.rating}}
+                    <i class="fa-regular fa-star"></i>
+                  </div>
 
+                </div>
               </div>
-            </div>
-          </a>
-        {{/each}}
-      </div>
+            </a>
+          {{/each}}
+
+        </div>
+      {{else}}
+        <h1>It seems like no matched result in your search....</h1>
+        <h2>Please try again</h2>
+      {{/if}}
     </div>
   </div>
 </div>
