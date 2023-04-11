@@ -1,0 +1,103 @@
+<a href="/" class="btn btn-secondary">Back</a>
+<div class="container mx-auto" style="width: 500px">
+  <form action="/restaurants/{{restaurant._id}}/edit" method="POST">
+    <div class="row">
+      <div class="col">
+        <label for="name" class="form-label">餐廳</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          value="{{restaurant.name}}"
+        />
+      </div>
+      <div class="col">
+        <label for="name_en" class="form-label">Restaurant</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name_en"
+          name="name_en"
+          value="{{restaurant.name_en}}"
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="category" class="form-label">分類</label>
+        <input
+          type="text"
+          class="form-control"
+          id="category"
+          name="category"
+          value="{{restaurant.category}}"
+        />
+      </div>
+      <div class="col">
+        <label for="rating" class="form-label">評分</label>
+        <input
+          type="number"
+          step=".1"
+          class="form-control"
+          id="rating"
+          name="rating"
+          min="0"
+          max="5"
+          value="{{restaurant.rating}}"
+        />
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="image" class="form-label">照片 URL</label>
+      <input
+        type="url"
+        class="form-control"
+        id="image"
+        name="image"
+        value="{{restaurant.image}}"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="location" class="form-label">地址</label>
+      <input
+        type="text"
+        class="form-control"
+        id="location"
+        name="location"
+        value="{{restaurant.location}}"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label">手機</label>
+      <input
+        type="tel"
+        class="form-control"
+        id="phone"
+        name="phone"
+        value="{{restaurant.phone}}"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="google_map" class="form-label">Google Map URL</label>
+      <input
+        type="url"
+        class="form-control"
+        id="google_map"
+        name="google_map"
+        value="{{restaurant.google_map}}"
+      />
+    </div>
+
+    <div>
+      <textarea
+        class="form-control"
+        placeholder="Leave a comment here"
+        id="floatingTextarea"
+        name="description"
+      >{{restaurant.description}}</textarea>
+    </div>
+    <button type="submit" class="btn btn-warning">Save</button>
+  </form>
+</div>

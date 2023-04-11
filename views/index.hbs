@@ -26,39 +26,49 @@
 </div>
 
 <!-- restaurant list -->
-<div class="container mt-5">
+<div class="container mt-4">
+  <a href="/restaurants/new" class="btn btn-primary">Create</a>
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
       {{#if restaurants}}
         <div class="row row-cols-sm-3">
           {{#each restaurants}}
-            <a
-              href="/restaurants/{{this.id}}"
-              class="text-secondary text-decoration-none"
-            >
-              <div class="card mb-3">
-                <img
-                  class="card-img-top"
-                  src="{{this.image}}"
-                  alt="{{this.name}}"
-                />
-                <div class="card-body p-3">
-                  <h6 class="card-title">{{this.name}}</h6>
-
-                  <div class="restaurant-category">
-                    <i class="fa-solid fa-utensils mb-3 pe-1"></i>
-                    {{this.category}}
-                  </div>
-                  <div class="text-end restaurant-rating">
-                    {{this.rating}}
-                    <i class="fa-regular fa-star"></i>
-                  </div>
-
+            <div class="card mb-4">
+              <img
+                class="card-img-top"
+                src="{{this.image}}"
+                alt="{{this.name}}"
+              />
+              <div class="card-body p-3">
+                <h6 class="card-title">{{this.name}}</h6>
+                <div class="restaurant-category">
+                  <i class="fa-solid fa-utensils mb-3 pe-1"></i>
+                  {{this.category}}
+                </div>
+                <div class="text-end restaurant-rating">
+                  {{this.rating}}
+                  <i class="fa-regular fa-star"></i>
                 </div>
               </div>
-            </a>
+              <div class="card-footer text-body-secondary">
+                <a
+                  href="/restaurants/{{this._id}}"
+                  class="btn btn-info"
+                >Detail</a>
+                <a
+                  href="/restaurants/{{this._id}}/edit"
+                  class="btn btn-warning"
+                >Edit</a>
+                <form
+                  action="/restaurants/{{this._id}}/delete"
+                  method="POST"
+                  style="display: inline;"
+                >
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+              </div>
+            </div>
           {{/each}}
-
         </div>
       {{else}}
         <h1>It seems like no matched result in your search....</h1>
