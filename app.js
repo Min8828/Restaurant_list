@@ -3,7 +3,7 @@ if (process.env.NODE_ENV !== "production") require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
-const engine = require("express-handlebars").engine;
+const hbs = require("express-handlebars");
 const Restaurant = require("./models/restaurant");
 
 const app = express();
@@ -12,7 +12,7 @@ const port = 3000;
 // setting template engine
 app.engine(
   "hbs",
-  engine({
+  hbs.engine({
     layoutsDir: "views/layouts",
     defaultLayout: "main",
     extname: "hbs",
@@ -37,7 +37,9 @@ db.once("open", () => console.log("mongodb connected!")); // 連線成功
 app.get("/", async (req, res) => {
   try {
     const restaurants = await Restaurant.find({}).lean().exec();
-    res.render("index", { restaurants });
+    res.render("index", {
+      restaurants,
+    });
   } catch {
     (err) => console.log(err);
   }

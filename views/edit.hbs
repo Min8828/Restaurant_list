@@ -1,3 +1,4 @@
+<h1 class="restaurant-show-title">編輯餐廳 - {{restaurant.name}}</h1>
 <a href="/" class="btn btn-secondary">Back</a>
 <div class="container mx-auto" style="width: 500px">
   <form action="/restaurants/{{restaurant._id}}/edit" method="POST">
@@ -10,6 +11,7 @@
           id="name"
           name="name"
           value="{{restaurant.name}}"
+          required
         />
       </div>
       <div class="col">
@@ -32,8 +34,17 @@
           class="form-control"
           id="category"
           name="category"
+          list="categoryOptions"
           value="{{restaurant.category}}"
         />
+        {{! 使用datalist，讓使用者可選擇或自行輸入 }}
+        <datalist id="categoryOptions">
+          <option>美式</option>
+          <option>咖啡</option>
+          <option>中東料理</option>
+          <option>日本料理</option>
+          <option>義式餐廳</option>
+        </datalist>
       </div>
       <div class="col">
         <label for="rating" class="form-label">評分</label>
@@ -96,8 +107,12 @@
         placeholder="Leave a comment here"
         id="floatingTextarea"
         name="description"
+        cols="30"
+        rows="5"
       >{{restaurant.description}}</textarea>
     </div>
     <button type="submit" class="btn btn-warning">Save</button>
+    {{! 使用type="reset" 可以清除/還原輸入 }}
+      <button type="reset" class="btn btn-outline-danger">Restore Input</button>
   </form>
 </div>

@@ -65,15 +65,6 @@ header {
   font-size: 0.8rem;
 }
 
-.restaurant-rating {
-  width: max-content;
-  padding: 0.15rem 0.3rem;
-  border-radius: 10px;
-  font-size: 0.8rem;
-  background-color: #0077b6;
-  color: white;
-}
-
 .restaurant-show-title {
   position: relative;
   top: -100px;

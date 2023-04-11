@@ -4,7 +4,13 @@
     <div class="row">
       <div class="col">
         <label for="name" class="form-label">餐廳</label>
-        <input type="text" class="form-control" id="name" name="name" />
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          required
+        />
       </div>
       <div class="col">
         <label for="name_en" class="form-label">Restaurant</label>
@@ -15,7 +21,21 @@
     <div class="row">
       <div class="col">
         <label for="category" class="form-label">分類</label>
-        <input type="text" class="form-control" id="rating" name="category" />
+        <input
+          type="text"
+          class="form-control"
+          id="category"
+          list="categoryOptions"
+          name="category"
+        />
+        {{! 使用datalist，讓使用者可選擇或自行輸入 }}
+        <datalist id="categoryOptions">
+          <option>美式</option>
+          <option>咖啡</option>
+          <option>中東料理</option>
+          <option>日本料理</option>
+          <option>義式餐廳</option>
+        </datalist>
       </div>
       <div class="col">
         <label for="rating" class="form-label">評分</label>
@@ -52,7 +72,7 @@
       />
     </div>
 
-    <div class="form-floating">
+    <div>
       <textarea
         class="form-control"
         placeholder="Leave a comment here"
@@ -61,8 +81,9 @@
         cols="30"
         rows="5"
       ></textarea>
-      <label for="floatingTextarea">Leave a comment here</label>
     </div>
     <button type="submit" class="btn btn-primary">Create</button>
+    {{! 使用type="reset" 可以清除/還原輸入 }}
+    <button type="reset" class="btn btn-outline-danger">Reset</button>
   </form>
 </div>
