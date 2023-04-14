@@ -1,7 +1,7 @@
 <h1 class="restaurant-show-title">編輯餐廳 - {{restaurant.name}}</h1>
 <a href="/" class="btn btn-secondary">Back</a>
 <div class="container mx-auto" style="width: 500px">
-  <form action="/restaurants/{{restaurant._id}}/edit" method="POST">
+  <form action="/restaurants/{{restaurant._id}}?_method=PUT" method="POST">
     <div class="row">
       <div class="col">
         <label for="name" class="form-label">餐廳</label>

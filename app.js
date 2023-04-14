@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const hbs = require('express-handlebars')
+const methodOverride = require('method-override')
 const Restaurant = require('./models/restaurant')
 
 const app = express()
@@ -27,6 +28,7 @@ app.set('view engine', 'hbs')
 // setting static files
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 
 mongoose.connect(process.env.MONGODB_URI) // 設定連線到 mongoDB
 const db = mongoose.connection // 取得資料庫連線狀態
@@ -78,7 +80,7 @@ app.get('/restaurants/:_id/edit', (req, res) => {
     .catch((error) => console.log(error))
 })
 
-app.post('/restaurants/:_id/edit', async (req, res) => {
+app.put('/restaurants/:_id', async (req, res) => {
   try {
     const _id = req.params._id
     const restaurant = req.body
@@ -94,7 +96,7 @@ app.post('/restaurants/:_id/edit', async (req, res) => {
 })
 
 // Delete
-app.post('/restaurants/:_id/delete', async (req, res) => {
+app.delete('/restaurants/:_id', async (req, res) => {
   try {
     const _id = req.params._id
     await Restaurant.findOneAndDelete({ _id })

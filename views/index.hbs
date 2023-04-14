@@ -57,9 +57,7 @@
                 </span>
 
               </div>
-              <div
-                class="card-footer d-flex justify-content-end flex-wrap"
-              >
+              <div class="card-footer d-flex justify-content-end flex-wrap">
                 <a
                   href="/restaurants/{{this._id}}/edit"
                   class="btn btn-warning btn-sm"
@@ -70,11 +68,14 @@
                   class="btn btn-info btn-sm mx-2"
                   style="height: max-content;"
                 >Details</a>
-                <form action="/restaurants/{{this._id}}/delete" method="POST">
+                <form
+                  action="/restaurants/{{this._id}}?_method=DELETE"
+                  method="POST"
+                >
                   <button
                     type="submit"
                     class="btn btn-danger btn-sm text-white"
-                  >delete</button>
+                  >Delete</button>
                 </form>
               </div>
             </div>
