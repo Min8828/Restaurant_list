@@ -5,8 +5,7 @@ const Restaurant = require("../restaurant")
 const restaurants = require('./restaurant.json').results
 
 db.once('open', () => {
-  restaurants.forEach((restaurant) => {
-    Restaurant.create(restaurant)
-  })
-  console.log('done')
+  console.log("running restaurantSeeder script...")
+  Restaurant.create(restaurants)
+  console.log("restaurantSeeder done!")
 })
